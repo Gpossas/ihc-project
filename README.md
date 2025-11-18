@@ -43,13 +43,8 @@ You can preview the production build with `npm run preview`.
 winget install --id=CoreyButler.NVMforWindows -e
 brew install nvm
 ```
-> Instalar as dependencias do projeto
-````
-
-npm install
-
-```
 
 
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
 ```
+````
