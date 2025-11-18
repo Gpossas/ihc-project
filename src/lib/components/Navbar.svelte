@@ -1,6 +1,14 @@
-<script>
-    export let categories = ["Séries", "Filmes"];
-    let selected = "Filmes";
+<script lang="ts">
+    import { createEventDispatcher } from 'svelte';
+
+    const dispatch = createEventDispatcher<{ changeType: 'movie' | 'tv' }>();
+
+    let selected: 'movie' | 'tv' = 'movie';
+
+    function select(type: 'movie' | 'tv') {
+        selected = type;
+        dispatch('changeType', type);
+    }
 </script>
     
 <nav class="navbar">
@@ -14,23 +22,20 @@
 </nav>
 
 <div class="text">
-    <p class="text_for_you">Para você</p>
+    <p class="text_for_you">Para você!</p>
 </div>
 
 <div class="tabs">
     <div class="buttons">
-        {#each categories as category}
-            <button class="button" class:selected={selected === category} on:click={() => (selected = category)}>{category}</button>
-        {/each}
+        <button class="button" class:selected={selected === 'tv'} on:click={() => select('tv')}>Séries</button>
+        <button class="button" class:selected={selected === 'movie'} on:click={() => select('movie')}>Filmes</button>
     </div>
-
 
     <select class="categoria-select">
         <option>Categorias</option>
     </select>
 </div>
-    
-    
+
 <style>
     #profile_picture {
         height: 60px;
@@ -46,7 +51,7 @@
         align-items: center;
         padding: 12px;
     }
-
+    
     .text_for_you {
         color: rgb(128, 128, 128);
         font-size: 25px;
@@ -63,8 +68,9 @@
     .logo { height: 26px; }
     .tabs {
         gap: 12px;
-        margin: 20px;
+        margin: 10px;
         display: flex;
+        gap: 12px;
         align-items: center;
         justify-content: space-between;
     }
@@ -75,6 +81,7 @@
         background-color: rgb(225, 225, 225);
         border: none;
         border-radius: 20px;
+        border: none;
     }
 
     .buttons {
@@ -151,4 +158,3 @@
     box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
     }
 </style>
-

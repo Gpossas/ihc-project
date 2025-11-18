@@ -1,67 +1,56 @@
-<script>
-    export let poster;
-    export let title;
-    export let rating_tomato;
-    export let rating_audience;
-    export let date;
+<script lang="ts">
+    import type { MediaItem } from '$lib/interfaces/MovieCard';
+
+    export let id: MediaItem['id'];
+    export let poster: MediaItem['poster'];
+    export let title: MediaItem['title'];
+    export let rating: MediaItem['rating'];
+    export let date: MediaItem['date'];
 </script>
-    
-    
+
 <div class="card">
-    <img src={poster} alt={title} class="poster" />
-    
-    
-    <div class="ratings">
-        {#if rating_tomato !== null}
-            <span>🍅 {rating_tomato}%</span>
-        {:else}
-            <span>🍅 - -</span>
-        {/if}
-        
-        
-        {#if rating_audience !== null}
-            <span>🍿 {rating_audience}%</span>
-        {:else}
-            <span>🍿 - -</span>
-        {/if}
+    <img class="poster" src={poster} alt={title} />
+
+    <div class="rating">
+        🍅 {rating}%
     </div>
-    
-    
+
     <h3>{title}</h3>
-    <p>Streaming {date}</p>
-    
-    
+
+    {#if date}
+        <p>{date}</p>
+    {/if}
+
     <button class="watchlist">+ WATCHLIST</button>
 </div>
-    
-    
+
 <style>
-.card {
-    width: 170px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-.poster {
-    width: 100%;
-    border-radius: 12px;
-}
-.ratings {
-    display: flex;
-    gap: 10px;
-    font-size: 14px;
-}
-.watchlist {
-    margin-top: 4px;
-    border: 1px solid black;
-    border-radius: 20px;
-    padding: 6px 0;
-    background: none;
-}
-p {
-    margin: 0;
-}
-h3 {
-    margin: 0;
-}
+    .card {
+        width: 170px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .poster {
+        width: 100%;
+        border-radius: 12px;
+    }
+
+    .rating {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .watchlist {
+        margin-top: 4px;
+        border: 1px solid black;
+        border-radius: 20px;
+        padding: 6px 0;
+        background: none;
+    }
+
+    p,h3 {
+        margin: 0;
+    }
 </style>
