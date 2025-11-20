@@ -1,27 +1,35 @@
 <script lang="ts">
     import type { MediaItem } from '$lib/interfaces/MovieCard';
+    import { addToWatchlist, removeFromWatchlist, isInWatchlist } from '../../utils/watchlist';
 
-    export let id: MediaItem['id'];
-    export let poster: MediaItem['poster'];
-    export let title: MediaItem['title'];
-    export let rating: MediaItem['rating'];
-    export let date: MediaItem['date'];
+    export let movie: MediaItem;
+
+    let inList = isInWatchlist(movie.id);
+
+    function toggle() {
+        if (inList) {
+            removeFromWatchlist(movie.id);
+        } else {
+            addToWatchlist(movie);
+        }
+        inList = !inList;
+    }
 </script>
 
 <div class="card">
-    <img class="poster" src={poster} alt={title} />
+    <img class="poster" src={movie.poster} alt={movie.title} />
 
     <div class="rating">
-        🍅 {rating}%
+        🍅 {movie.rating}%
     </div>
 
-    <h3>{title}</h3>
+    <h3>{movie.title}</h3>
 
-    {#if date}
-        <p>{date}</p>
+    {#if movie.date}
+        <p>{movie.date}</p>
     {/if}
 
-    <button class="watchlist">+ WATCHLIST</button>
+    <button class="watchlist" onclick={toggle}>{inList ? "Remove from Watchlist" : "+ Watchlist"}</button>
 </div>
 
 <style>

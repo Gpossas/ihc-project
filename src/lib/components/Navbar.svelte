@@ -2,22 +2,40 @@
     import { createEventDispatcher } from 'svelte';
 
     const dispatch = createEventDispatcher<{ changeType: 'movie' | 'tv' }>();
+    import { goto } from '$app/navigation';
 
     let selected: 'movie' | 'tv' = 'movie';
-
     function select(type: 'movie' | 'tv') {
         selected = type;
         dispatch('changeType', type);
     }
+
+    let menuOpen = false;
+    function goToWatchlist() {
+        goto('/watchlist');
+    }
 </script>
     
 <nav class="navbar">
-    <div class="left">
-        <img src="profile_picture.png" alt="User profile" class="logo" id="profile_picture" />
-    </div>
-
     <div class="center">
         <img src="rotten_tomatoes_logo.png" alt="Rotten Tomatoes" class="logo" id="logo" />
+    </div>
+
+    <div class="hamburger-wrapper">
+        <button class="hamburger-button" on:click={() => (menuOpen = !menuOpen)}>
+            <svg width="28" height="28" stroke="black" fill="none" stroke-width="3">
+                <line x1="4" y1="8" x2="24" y2="8" />
+                <line x1="4" y1="14" x2="24" y2="14" />
+                <line x1="4" y1="20" x2="24" y2="20" />
+            </svg>
+        </button>
+
+        <!-- ✅ DROPDOWN MENU -->
+        {#if menuOpen}
+            <div class="hamburger-menu">
+                <button on:click={goToWatchlist}>Watchlist</button>
+            </div>
+        {/if}
     </div>
 </nav>
 
@@ -37,10 +55,6 @@
 </div>
 
 <style>
-    #profile_picture {
-        height: 60px;
-        width: 60px;
-    }
     #logo {
         height: 40px;
 
@@ -157,4 +171,45 @@
     .button:disabled {
     box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
     }
+
+    /* HAMBURGER WRAPPER */
+.hamburger-wrapper {
+    position: relative;
+}
+
+/* HAMBURGER BUTTON */
+.hamburger-button {
+    background: none;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+}
+
+/* MENU DROPDOWN */
+.hamburger-menu {
+    position: absolute;
+    right: 0;
+    top: 36px;
+    background: white;
+    border-radius: 10px;
+    padding: 10px 0;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 3px 10px;
+    min-width: 140px;
+    z-index: 10;
+}
+
+.hamburger-menu button {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 10px 16px;
+    text-align: left;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.hamburger-menu button:hover {
+    background: #f0f0f0;
+}
+
 </style>
