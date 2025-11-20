@@ -12,11 +12,13 @@
     <img src="rotten_tomatoes_logo.png" alt="Rotten Tomatoes" class="logo" id="logo" />
 </button>
 
-<h1>Your Watchlist</h1>
+<p>Sua lista de filmes salvos</p>
 
 <div class="grid">
     {#each $watchlist as movie (movie.id)}
         <MovieCard {movie} />
+    {:else}
+     <h2>Você ainda não salvou nenhum filme :(</h2>
     {/each}
 </div>
 
@@ -40,5 +42,12 @@
         justify-content: space-between;
         align-items: center;
         padding: 12px;
+    }
+
+    p {
+        padding-left: 12px;
+        color: rgb(128, 128, 128);
+        font-size: 25px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
 </style>
