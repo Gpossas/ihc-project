@@ -51,7 +51,7 @@
 {:else}
     <div class="grid">
         {#each items as movie (movie.id)}
-            <MovieCard {...movie} />
+            <MovieCard {movie} />
         {/each}
     </div>
 {/if}

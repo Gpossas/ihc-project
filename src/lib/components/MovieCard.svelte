@@ -1,27 +1,45 @@
 <script lang="ts">
     import type { MediaItem } from '$lib/interfaces/MovieCard';
+    import { addToWatchlist, removeFromWatchlist, isInWatchlist } from '../../utils/watchlist';
 
-    export let id: MediaItem['id'];
-    export let poster: MediaItem['poster'];
-    export let title: MediaItem['title'];
-    export let rating: MediaItem['rating'];
-    export let date: MediaItem['date'];
+    export let movie: MediaItem;
+
+    let inList = isInWatchlist(movie.id);
+
+    function toggle() {
+        if (inList) {
+            removeFromWatchlist(movie.id);
+        } else {
+            addToWatchlist(movie);
+        }
+        inList = !inList;
+    }
 </script>
 
 <div class="card">
-    <img class="poster" src={poster} alt={title} />
+    <img class="poster" src={movie.poster} alt={movie.title} />
 
     <div class="rating">
-        🍅 {rating}%
+        🍅 {movie.rating}%
     </div>
 
-    <h3>{title}</h3>
+    <h3>{movie.title}</h3>
 
-    {#if date}
-        <p>{date}</p>
+    {#if movie.date}
+        <p>{movie.date}</p>
     {/if}
 
-    <button class="watchlist">+ WATCHLIST</button>
+    <button
+    class="watchlist-btn 
+           {inList ? 'added' : ''}"
+    on:click={toggle}
+    >
+        {#if inList}
+            ✔ Adicionado
+        {:else}
+            Salvar filme
+        {/if}
+    </button>
 </div>
 
 <style>
@@ -42,13 +60,20 @@
         font-weight: 600;
     }
 
-    .watchlist {
+    .watchlist-btn {
         margin-top: 4px;
         border: 1px solid black;
         border-radius: 20px;
         padding: 6px 0;
         background: none;
     }
+
+    .watchlist-btn.added {
+        background-color: #22c55e; 
+        transform: scale(1.05);
+        color: white;
+    }
+
 
     p,h3 {
         margin: 0;
