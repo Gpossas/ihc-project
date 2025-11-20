@@ -29,7 +29,17 @@
         <p>{movie.date}</p>
     {/if}
 
-    <button class="watchlist" onclick={toggle}>{inList ? "Remove from Watchlist" : "+ Watchlist"}</button>
+    <button
+    class="watchlist-btn 
+           {inList ? 'added' : ''}"
+    on:click={toggle}
+    >
+        {#if inList}
+            ✔ Adicionado
+        {:else}
+            Salvar filme
+        {/if}
+    </button>
 </div>
 
 <style>
@@ -50,13 +60,20 @@
         font-weight: 600;
     }
 
-    .watchlist {
+    .watchlist-btn {
         margin-top: 4px;
         border: 1px solid black;
         border-radius: 20px;
         padding: 6px 0;
         background: none;
     }
+
+    .watchlist-btn.added {
+        background-color: #22c55e; 
+        transform: scale(1.05);
+        color: white;
+    }
+
 
     p,h3 {
         margin: 0;

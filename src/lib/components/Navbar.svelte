@@ -33,7 +33,7 @@
         <!-- ✅ DROPDOWN MENU -->
         {#if menuOpen}
             <div class="hamburger-menu">
-                <button on:click={goToWatchlist}>Watchlist</button>
+                <button on:click={goToWatchlist}>Filmes salvos</button>
             </div>
         {/if}
     </div>
