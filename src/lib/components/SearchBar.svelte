@@ -1,5 +1,13 @@
-<script>
+<script lang="ts">
+    import { goto } from "$app/navigation";
+
   let query = "";
+
+  function handleKey(e: KeyboardEvent) {
+    if (e.key === "Enter" && query.trim() !== "") {
+      goto(`/search?query=${encodeURIComponent(query)}`);
+    }
+  }
 </script>
 
 <div class="search-bar">
@@ -10,6 +18,7 @@
       type="text" 
       placeholder="Buscar..."
       bind:value={query}
+      on:keydown={handleKey}
     />
 </div>
 
