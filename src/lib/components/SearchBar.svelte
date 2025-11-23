@@ -42,7 +42,7 @@
     border: none;
     outline: none;
     background: transparent;
-    font-size: 16px;
+    font-size: 20px;
     color: #333;
 }
 

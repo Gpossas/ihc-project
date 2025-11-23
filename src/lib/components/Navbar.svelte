@@ -1,6 +1,5 @@
 <script lang="ts">
     import { createEventDispatcher } from 'svelte';
-    import SearchBar from "./SearchBar.svelte";
 
     const dispatch = createEventDispatcher<{ changeType: 'movie' | 'tv' }>();
     import { goto } from '$app/navigation';
@@ -34,7 +33,7 @@
         <!-- ✅ DROPDOWN MENU -->
         {#if menuOpen}
             <div class="hamburger-menu">
-                <button on:click={goToWatchlist}>Filmes salvos</button>
+                <button on:click={goToWatchlist}>Filmes e Séries salvos</button>
             </div>
         {/if}
     </div>
@@ -49,10 +48,6 @@
         <button class="button" class:selected={selected === 'tv'} on:click={() => select('tv')}>Séries</button>
         <button class="button" class:selected={selected === 'movie'} on:click={() => select('movie')}>Filmes</button>
     </div>
-
-    <select class="categoria-select">
-        <option>Categorias</option>
-    </select>
 </div>
 
 <style>
@@ -69,7 +64,7 @@
     
     .text_for_you {
         color: rgb(128, 128, 128);
-        font-size: 25px;
+        font-size: 30px;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
     .text {
@@ -88,15 +83,6 @@
         gap: 12px;
         align-items: center;
         justify-content: space-between;
-    }
-    
-    .categoria-select {
-        margin-left: auto;
-        padding: 10px;
-        background-color: rgb(225, 225, 225);
-        border: none;
-        border-radius: 20px;
-        border: none;
     }
 
     .buttons {
@@ -117,7 +103,7 @@
     display: inline-flex;
     fill: currentcolor;
     font-family: "Google Sans",Roboto,Arial,sans-serif;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 500;
     height: 28px;
     justify-content: center;
@@ -205,7 +191,7 @@
     border: none;
     padding: 10px 16px;
     text-align: left;
-    font-size: 16px;
+    font-size: 18px;
     cursor: pointer;
 }
 
