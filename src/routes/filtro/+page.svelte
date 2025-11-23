@@ -47,8 +47,9 @@
   <button class="home" onclick={() => goto("/")}>
     <img src="rotten_tomatoes_logo.png" alt="Rotten Tomatoes" id="logo" />
   </button>
-  <h1>Filtros</h1>
 </div>
+
+<h1>Filtros</h1>
 
 <div class="content">
   <!-- ORDEM -->
