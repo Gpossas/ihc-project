@@ -41,12 +41,6 @@
     </div>
 </nav>
 
-<div class="search">
-    <SearchBar/>
-</div>
-
-
-
 <div class="text">
     <p class="text_for_you">Para você!</p>
 </div>

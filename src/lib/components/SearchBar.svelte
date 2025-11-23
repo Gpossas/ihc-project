@@ -15,14 +15,13 @@
 
 <style>
   .search-bar {
-    position: fixed;
-    bottom: 20px;               
-    left: 10px;
-    width: 60%;                 
-    max-width: 500px;
-
-    background: #bcbcbc;         
-    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    background: #bfbfbf;
+    border-radius: 40px;
+    padding: 11px 16px;
+    width: 80%;
+     
     border-radius: 40px;
 
     display: flex;
@@ -30,6 +29,7 @@
     gap: 10px;
 
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    
 }
 
 .search-bar .icon {
