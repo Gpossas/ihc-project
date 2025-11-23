@@ -113,7 +113,6 @@
     <h2 id="filterResponse">Sem resultados</h2>
   {/each}
 </div>
-VITE_TMDB_KEY=2e79a5823f7a7da886a149df2da171dc
 
 <style>
   .container {
