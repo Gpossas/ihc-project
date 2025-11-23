@@ -1,5 +1,6 @@
 <script lang="ts">
     import { createEventDispatcher } from 'svelte';
+    import SearchBar from "./SearchBar.svelte";
 
     const dispatch = createEventDispatcher<{ changeType: 'movie' | 'tv' }>();
     import { goto } from '$app/navigation';
@@ -34,10 +35,17 @@
         {#if menuOpen}
             <div class="hamburger-menu">
                 <button on:click={goToWatchlist}>Filmes salvos</button>
+                <button on:click={() => goto('/filtro')}>Filtros</button>
             </div>
         {/if}
     </div>
 </nav>
+
+<div class="search">
+    <SearchBar/>
+</div>
+
+
 
 <div class="text">
     <p class="text_for_you">Para você!</p>
@@ -212,4 +220,7 @@
     background: #f0f0f0;
 }
 
+.bar {
+    align-items: center;
+}
 </style>
