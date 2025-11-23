@@ -35,7 +35,6 @@
         {#if menuOpen}
             <div class="hamburger-menu">
                 <button on:click={goToWatchlist}>Filmes salvos</button>
-                <button on:click={() => goto('/filtro')}>Filtros</button>
             </div>
         {/if}
     </div>
