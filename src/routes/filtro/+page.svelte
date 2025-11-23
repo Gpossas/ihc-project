@@ -103,7 +103,30 @@
   </section>
 </div>
 
-<div class="filter">
+<div class="where-to-watch">
+    <h2>Onde assistir</h2>
+
+    <div class="providers">
+        <div class="provider">
+            <img src="/fandango.png" alt="Fandango At Home">
+        </div>
+        <div class="provider">
+            <img src="/peacock.png" alt="Peacock">
+        </div>
+        <div class="provider">
+            <img height="80%" width="80%" src="/netflix.png" alt="Netflix">
+        </div>
+        <div class="provider">
+            <img src="/hulu.png" alt="Hulu">
+        </div>
+        <div class="provider">
+            <img src="/primevideo.png" alt="Prime Video">
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="filter">
   <button onclick={aplicarFiltro}>Aplicar filtros</button>
 </div>
 
@@ -113,7 +136,7 @@
   {:else}
     <h2 id="filterResponse">Sem resultados</h2>
   {/each}
-</div>
+</div> -->
 
 <style>
   .container {
@@ -159,4 +182,36 @@
     gap: 22px;
     padding: 16px;
   }
+
+.providers {
+    display: flex;
+    gap: 12px;
+}
+
+.provider {
+    width: 60px;
+    height: 60px;
+
+    background: #f3f3f3;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+
+    transition: transform 0.2s ease;
+}
+
+.provider img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+}
+
+.provider:hover {
+    transform: scale(1.05);
+}
+
 </style>
