@@ -2,7 +2,7 @@
     import { goto } from "$app/navigation";
 
 </script>
-<button class="filter-btn" on:click={() => goto('/filtro')}>
+<button class="filter-btn" on:click={() => goto('/filtro')} tabindex="1">
     Filtro
 </button>
 

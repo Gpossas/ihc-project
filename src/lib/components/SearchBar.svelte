@@ -6,6 +6,7 @@
     <img class="icon" src="search_icon.png" alt="">
     
     <input 
+      tabindex="1"
       type="text" 
       placeholder="Buscar..."
       bind:value={query}
