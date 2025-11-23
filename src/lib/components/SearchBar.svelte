@@ -1,51 +1,49 @@
 <script>
   let query = "";
-  
-  function handleInput(e) {
-    query = e.target.value;
-  }
 </script>
 
-<div class="search-wrapper">
-  <svg class="search-icon" viewBox="0 0 24 24" stroke-width="2" fill="none">
-    <path stroke="gray" stroke-linecap="round" stroke-linejoin="round"
-      d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1 0 6.65 6.65a7.5 7.5 0 0 0 10.6 10.6Z" />
-  </svg>
-
-  <input 
-    type="text" 
-    placeholder="Buscar..."
-    bind:value={query}
-    on:input={handleInput}
-  />
+<div class="search-bar">
+    <img class="icon" src="search_icon.png" alt="">
+    
+    <input 
+      type="text" 
+      placeholder="Buscar..."
+      bind:value={query}
+    />
 </div>
 
+
 <style>
-  .search-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 400px;
-  }
+  .search-bar {
+    position: fixed;
+    bottom: 20px;               
+    left: 10px;
+    width: 60%;                 
+    max-width: 500px;
 
-  .search-icon {
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    width: 20px;
+    background: #bcbcbc;         
+    padding: 12px 18px;
+    border-radius: 40px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.search-bar .icon {
     height: 20px;
-    transform: translateY(-50%);
-    pointer-events: none;
-  }
+}
 
-  input {
-    width: 100%;
-    padding: 10px 14px;
-    padding-left: 42px;
-    border-radius: 999px;
-    border: 1px solid #ccc;
+.search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
     font-size: 16px;
-    transition: border 0.2s;
-  }
+    color: #333;
+}
 
   input:focus {
     border-color: #888;
