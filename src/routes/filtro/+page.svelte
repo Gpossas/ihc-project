@@ -1,5 +1,6 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
+    import GoToHomeButton from "$lib/components/GoToHomeButton.svelte";
   import MovieCard from "$lib/components/MovieCard.svelte";
   import type { MediaItem } from "$lib/interfaces/MovieCard";
 
@@ -44,10 +45,12 @@
 </script>
 
 <div class="container">
-  <button class="home" onclick={() => goto("/")}>
+  <button class="home">
     <img src="rotten_tomatoes_logo.png" alt="Rotten Tomatoes" id="logo" />
   </button>
 </div>
+
+<GoToHomeButton />
 
 <h1>Filtros</h1>
 

@@ -1,16 +1,13 @@
 <script lang="ts">
-    import { goto } from '$app/navigation';
+    import GoToHomeButton from '$lib/components/GoToHomeButton.svelte';
     import MovieCard from '$lib/components/MovieCard.svelte';
     import { watchlist } from '../../stores/watchlist';
-
-    function goToHome() {
-        goto('/');
-    }
 </script>
 
-<button class="center" onclick={goToHome}>
-    <img src="rotten_tomatoes_logo.png" alt="Rotten Tomatoes" class="logo" id="logo" />
-</button>
+
+<img style="margin: 10px;" src="rotten_tomatoes_logo.png" alt="Rotten Tomatoes" class="logo" id="logo" />
+
+<GoToHomeButton />
 
 <p>Sua lista de filmes salvos</p>
 
@@ -33,15 +30,6 @@
         grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
         gap: 22px;
         padding: 16px;
-    }
-
-    button {
-        background: none;
-        border: none;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px;
     }
 
     p {
